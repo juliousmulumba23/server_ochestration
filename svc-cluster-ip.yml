@@ -1,0 +1,13 @@
+apiVersion: v1  ##This is an internal service that will be used by other pods in the cluster.
+kind: Service
+metadata:
+  name: svc-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: svc-example
+  ports:
+  - name: http
+    protocol: TCP #[determines type of communication the service is using]
+    port: 80  ##[determines the port value that the service is listening on. Clients communicating with the service use that port.]
+    targetPort: 80 ##[determines the port the service routing traffic to on the backend pods.]

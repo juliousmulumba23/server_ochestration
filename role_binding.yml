@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader
+  namespace: default
+subjects:  ##Subject list defines who the Role applies to
+- kind: User
+  name: dev
+  apiGroup: rbac.authorization.k8s.io ##ApiGroups in Kubernetes are used to specify the set of resources that a Role or ClusterRole can access.
+roleRef:  ##roleRef connects the RoleBinding to the actual Role
+  kind: Role
+  name: pod-reader
+  apiGroup: rbac.authorization.k8s.io

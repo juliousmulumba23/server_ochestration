@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: juels-passwd
+data:
+  .juels: cm9vdDokYXByMSRVMUlSMkViVyRVdFVkeVN3akc3azh0LkNKTWdsN1owCg==

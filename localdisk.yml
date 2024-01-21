@@ -1,0 +1,7 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: localdisk
+provisioner: kubernetes.io/no-provisioner
+allowVolumeExpansion: true     ##With this set to true, it will allow us to expand our persistent volume later.
+## You don't have to actually set a StorageClass, when you create a Persistent volume, one will automatically be created but will not have allow volume expansion set to true. Since we want it to be true, we go ahead and create it manually.

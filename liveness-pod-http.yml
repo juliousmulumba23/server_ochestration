@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod-http
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.19.1
+    livenessProbe:
+      httpGet:        ##This makes an httpGet request to the container to determine the status of the container.
+        path: /       ## This the path to check for the health of the container.
+        port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 5

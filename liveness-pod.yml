@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  restartPolicy: Always
+  containers:
+  - name: alpine
+    image: alpine
+    command: ['sh', '-c', 'apk --update add curl']
+    livenessProbe:
+      exec:
+        command: ["echo", "Hello, World!"]
+      initialDelaySeconds: 5  ##with this, the probe will wait 5 seconds after the container has started up to begin running the liveness probes to check container health.
+      periodSeconds: 5 ##The probe will be running every after 5 seconds.

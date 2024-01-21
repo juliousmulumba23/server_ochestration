@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - http:   #We shall have a single http rule
+      paths:
+      - path: /somepath      ##We are routing traffic to this path to get to the backend service svc-clusterip through port 80
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-clusterip
+            port:
+              name: http
+#              number: 80

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: metrics-test
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      volumeMounts:
+      - name: htpasswd-volume
+        mountPath: /etc/nginx/config
+  restartPolicy: OnFailure
+  volumes:
+  - name: htpasswd-volume
+    secret:
+      secretName: juels-passwd
