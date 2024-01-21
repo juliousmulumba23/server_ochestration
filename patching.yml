@@ -21,7 +21,7 @@
       changed_when: reg_reboot_required.rc != 0
       notify:
         - Reboot server
-
+  handlers: 
     - name : Reboot server
       ansible.builtin.reboot:
         msg: "Reboot initiated by Ansible after OS update"
