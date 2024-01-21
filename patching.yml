@@ -1,0 +1,29 @@
+---
+- hosts: qaservers
+
+  tasks:
+    - name: check for update
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install dnf-utils
+      ansible.builtin.dnf:
+        name: 'dnf-utils'
+        state: latest
+        update_cache: yes
+
+    - name: Check if a reboot is required
+      command: needs-restarting -r
+      register: reg_reboot_required
+      ignore_errors: yes
+      failed_when: false
+      changed_when: reg_reboot_required.rc != 0
+      notify:
+        - Reboot server
+
+    - name : Reboot server
+      ansible.builtin.reboot:
+        msg: "Reboot initiated by Ansible after OS update"
+        reboot_timeout: 3600
+        test_command: uptime
