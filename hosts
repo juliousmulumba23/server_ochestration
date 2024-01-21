@@ -1,4 +1,5 @@
 [qaservers]
 devplaybooktestrh8
-devdrenrh8
-tstdrenrh8 
+#devdrenrh8
+tstdrenrh8
+prdansiblerh8 
